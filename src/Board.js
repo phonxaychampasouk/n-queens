@@ -113,7 +113,6 @@
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function (colIndex) {
       let sum = 0;
-      debugger;
       let numArrays = this.attributes.n;
       for (var i = 0; i < numArrays; i++) {
         sum += this.rows()[i][colIndex];
@@ -133,12 +132,13 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function (majorDiagonalColumnIndexAtFirstRow) {
+      //debugger;
       let rowMatrix = this.rows();
       let n = this.attributes.n;
-      let row = 0;
       let sum = 0;
-      for (var column = majorDiagonalColumnIndexAtFirstRow; row <= n && column <= n; column++) {
-        if (row >= 0) {
+      let row = 0;
+      for (var column = majorDiagonalColumnIndexAtFirstRow; column < n; column++) {
+        if (row < n && column >= 0) {
           sum += rowMatrix[row][column];
         }
         row++;
