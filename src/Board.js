@@ -87,7 +87,7 @@
 
     hasRowConflictAt: function (rowIndex) {
       //debugger;
-      let targetArray = this.get(rowIndex);
+      let targetArray = this.rows()[rowIndex];
       let sum = targetArray.reduce(this.getSum, 0);
 
       return sum > 1; // fixme
@@ -113,10 +113,9 @@
     hasColConflictAt: function (colIndex) {
       let sum = 0;
       debugger;
-      let numArrays = Object.keys(this.attributes).length - 1;
+      let numArrays = this.attributes.n;
       for (var i = 0; i < numArrays; i++) {
-        let currentArray = this.get(i);
-        sum += currentArray[colIndex];
+        sum += this.rows()[i][colIndex];
       }
       return sum > 1; // fixme
     },
